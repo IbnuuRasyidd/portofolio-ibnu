@@ -5,28 +5,34 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About Me - Ibnu Project</title>
 
-  <!-- Tailwind CSS CDN -->
+  <!-- Import Tailwind CSS via CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Font Awesome -->
+  <!-- Import ikon Font Awesome -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 
   <style>
+    /* Import font Inter dari Google Fonts */
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
     * { font-family: 'Inter', sans-serif; }
 
-    .gradient-text {
-      background: linear-gradient(135deg, #8B5CF6 0%, #EC4899 50%, #EF4444 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
+    /* Efek gradasi pada teks */
+   .gradient-text {
+  background: linear-gradient(135deg, #8B5CF6 0%, #EC4899 50%, #EF4444 100%);
+  -webkit-background-clip: text;   /* untuk Chrome, Safari */
+  background-clip: text;           /* standar CSS (Firefox & lainnya) */
+  -webkit-text-fill-color: transparent; /* warna teks transparan */
+  color: transparent;              /* fallback standar */
+}
 
+    /* Efek kaca transparan (glassmorphism) untuk navbar */
     .glass-effect {
       background: rgba(255, 255, 255, 0.9);
       backdrop-filter: blur(12px);
       border: 1px solid rgba(255, 255, 255, 0.2);
     }
 
+    /* Animasi elemen melayang */
     .floating {
       animation: floating 6s ease-in-out infinite;
     }
@@ -38,28 +44,35 @@
 </head>
 <body class="bg-gray-50">
 
-  <!-- NAVBAR -->
+  <!-- ========== NAVBAR ========== -->
   <nav class="fixed top-0 w-full z-50 glass-effect">
     <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <!-- Logo -->
       <div class="text-2xl font-bold">Ibnuu<span class="text-purple-600">.</span></div>
+
+      <!-- Menu navigasi desktop -->
       <div class="hidden md:flex space-x-8">
         <a href="index.html" class="text-gray-700 hover:text-purple-600">Home</a>
         <a href="projects.html" class="text-gray-700 hover:text-purple-600">Projects</a>
+        <!-- Halaman aktif (About) diberi warna ungu -->
         <a href="about.html" class="text-purple-600 font-semibold">About</a>
         <a href="contact.html" class="text-gray-700 hover:text-purple-600">Contact</a>
       </div>
     </div>
   </nav>
 
-  <!-- ABOUT SECTION -->
+  <!-- ========== ABOUT SECTION ========== -->
   <section id="about" class="pt-32 pb-20 px-6">
     <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
       
-      <!-- FOTO -->
+      <!-- Bagian kiri: Foto profil -->
       <div class="flex justify-center lg:justify-start relative">
+        <!-- Dekorasi lingkaran ungu -->
         <div class="absolute -top-6 -left-6 w-24 h-24 bg-purple-500 rounded-full floating"></div>
+        <!-- Dekorasi lingkaran pink -->
         <div class="absolute -bottom-8 -right-6 w-16 h-16 bg-pink-500 rounded-full floating" style="animation-delay: -2s"></div>
 
+        <!-- Foto utama -->
         <div class="relative w-80 h-80 lg:w-96 lg:h-96 rounded-2xl overflow-hidden shadow-2xl border-4 border-white">
           <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=500&h=500&fit=crop" 
                alt="About Photo"
@@ -67,23 +80,28 @@
         </div>
       </div>
 
-      <!-- TEKS -->
+      <!-- Bagian kanan: Teks deskripsi -->
       <div class="text-center lg:text-left">
+        <!-- Judul -->
         <h2 class="text-4xl font-bold mb-6">
           <span class="gradient-text">About</span> Me
         </h2>
+
+        <!-- Paragraf perkenalan -->
         <p class="text-lg text-gray-600 mb-6 leading-relaxed">
           Hi, I'm <span class="font-semibold text-gray-900">Ibnu</span>, a passionate frontend developer who loves crafting 
           modern, clean, and user-friendly web applications.  
           I enjoy turning complex problems into simple, beautiful, and intuitive designs.
         </p>
+
+        <!-- Paragraf skill -->
         <p class="text-lg text-gray-600 mb-6 leading-relaxed">
           With experience in <span class="text-purple-600">HTML</span>, <span class="text-blue-500">CSS</span>, 
           <span class="text-yellow-500">JavaScript</span>, and frameworks like <span class="text-cyan-500">React</span>, 
           I aim to deliver engaging digital experiences.
         </p>
 
-        <!-- CTA -->
+        <!-- Tombol CTA -->
         <div class="flex justify-center lg:justify-start gap-4">
           <a href="projects.html" class="px-6 py-3 bg-purple-600 text-white rounded-lg shadow hover:bg-purple-700 transition">
             View My Projects
@@ -93,7 +111,7 @@
           </a>
         </div>
 
-        <!-- SOCIAL -->
+        <!-- Link Sosial -->
         <div class="flex justify-center lg:justify-start space-x-6 mt-8">
           <a href="#" class="text-gray-600 hover:text-purple-600"><i class="fab fa-github text-2xl"></i></a>
           <a href="#" class="text-gray-600 hover:text-purple-600"><i class="fab fa-linkedin text-2xl"></i></a>
