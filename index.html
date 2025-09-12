@@ -1,13 +1,290 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.js"></script>
-  </body>
-</html>
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ibnu Project</title>
+
+    <!-- Import TailwindCSS dari CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Import Font Awesome (ikon sosial, ikon menu, dll.) -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <style>
+        /* Import font Inter dari Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Background gradient custom */
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        /* Efek text dengan gradient */
+        .gradient-text {
+            background: linear-gradient(135deg, #8B5CF6 0%, #EC4899 50%, #EF4444 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Efek kaca transparan (glassmorphism) */
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* Animasi mengapung */
+        .floating-animation {
+            animation: floating 6s ease-in-out infinite;
+        }
+
+        /* Keyframes untuk animasi floating */
+        @keyframes floating {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* Lingkaran dekorasi untuk foto profil */
+        .profile-circle {
+            background: linear-gradient(45deg, rgba(139, 92, 246, 0.1), rgba(236, 72, 153, 0.1));
+            border: 3px solid rgba(139, 92, 246, 0.2);
+        }
+
+        /* Tombol utama (primary button) */
+        .btn-primary {
+            background: linear-gradient(135deg, #1f2937, #374151);
+            transition: all 0.3s ease;
+        }
+
+        /* Efek hover untuk tombol utama */
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #111827, #1f2937);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Tombol sekunder (outline button) */
+        .btn-secondary {
+            border: 2px solid #6b7280;
+            transition: all 0.3s ease;
+        }
+
+        /* Efek hover untuk tombol sekunder */
+        .btn-secondary:hover {
+            border-color: #8B5CF6;
+            color: #8B5CF6;
+            transform: translateY(-2px);
+        }
+
+        /* Styling link navigasi */
+        .nav-link {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        /* Hover effect nav link */
+        .nav-link:hover {
+            color: #8B5CF6;
+        }
+
+        /* Link aktif */
+        .nav-link.active {
+            color: #8B5CF6;
+        }
+
+        /* Garis bawah gradient untuk nav link aktif */
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(135deg, #8B5CF6, #EC4899);
+            border-radius: 1px;
+        }
+
+        /* Background hero section */
+        .hero-container {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #cbd5e1 100%);
+        }
+
+        /* Efek typing animasi pada teks */
+        .typing-animation {
+            overflow: hidden;
+            border-right: 3px solid #8B5CF6;
+            white-space: nowrap;
+            margin: 0 auto;
+            animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+        }
+
+        /* Keyframes typing effect */
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        /* Keyframes kedip cursor */
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            50% { border-color: #8B5CF6; }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    
+    <!-- =======================
+         NAVIGATION BAR
+    ======================== -->
+    <nav class="fixed top-0 w-full z-50 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex justify-between items-center py-6">
+                <!-- Logo -->
+                <div class="text-2xl font-bold text-gray-900">
+                    Ibnuu<span class="text-purple-600">.</span>
+                </div>
+                
+                <!-- Menu navigasi untuk desktop -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="nav-link active text-gray-700 font-medium">Home</a>
+                    <a href="#projects" class="nav-link text-gray-700 font-medium">Projects</a>
+                    <a href="#about" class="nav-link text-gray-700 font-medium">About</a>
+                    <a href="#contact" class="nav-link text-gray-700 font-medium">Contact</a>
+                </div>
+                
+                <!-- Tombol dark mode (dummy, belum ada JS fungsinya) -->
+                <div class="hidden md:flex items-center">
+                    <button class="w-10 h-10 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center transition-colors">
+                        <i class="fas fa-moon text-gray-600"></i>
+                    </button>
+                </div>
+                
+                <!-- Tombol menu untuk mobile -->
+                <button class="md:hidden text-gray-700 hover:text-purple-600 transition-colors" id="mobile-menu-btn">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Menu navigasi versi mobile -->
+        <div class="md:hidden glass-effect border-t" id="mobile-menu" style="display: none;">
+            <div class="px-6 py-4 space-y-3">
+                <a href="#home" class="block py-2 text-gray-700 hover:text-purple-600 font-medium">Home</a>
+                <a href="#projects" class="block py-2 text-gray-700 hover:text-purple-600 font-medium">Projects</a>
+                <a href="#about" class="block py-2 text-gray-700 hover:text-purple-600 font-medium">About</a>
+                <a href="#contact" class="block py-2 text-gray-700 hover:text-purple-600 font-medium">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- =======================
+         HERO SECTION
+    ======================== -->
+    <section id="home" class="hero-container flex items-center justify-center px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+                
+                <!-- Konten kiri (teks perkenalan) -->
+                <div class="text-center lg:text-left order-2 lg:order-1">
+                    <!-- Salam -->
+                    <div class="flex items-center justify-center lg:justify-start mb-6">
+                        <span class="text-lg text-gray-600 mr-2">Hey, I'm Ibnuu</span>
+                        <span class="text-2xl animate-pulse">👋</span>
+                    </div>
+                    
+                    <!-- Judul utama -->
+                    <h1 class="text-5xl lg:text-7xl font-bold mb-8 leading-tight">
+                        <span class="gradient-text">Front</span><span class="text-gray-900">end</span><br>
+                        <span class="text-gray-900">Developer</span>
+                    </h1>
+                    
+                    <!-- Deskripsi -->
+                    <p class="text-xl text-gray-600 mb-12 max-w-lg mx-auto lg:mx-0 leading-relaxed">
+                        I'm a frontend developer based in Italy, I'll help you build beautiful websites your users will love.
+                    </p>
+                    
+                    <!-- Tombol CTA -->
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                        <button class="btn-primary px-8 py-4 rounded-lg text-white font-semibold">
+                            Get In Touch
+                        </button>
+                        <button class="btn-secondary px-8 py-4 rounded-lg text-gray-700 font-semibold">
+                            Browse Projects
+                        </button>
+                    </div>
+                    
+                    <!-- Link sosial -->
+                    <div class="flex justify-center lg:justify-start space-x-6 mt-12">
+                        <!-- GitHub -->
+                        <a href="https://github.com/IbnuuRasyidd/portofolio-ibnu" class="w-12 h-12 rounded-full bg-white shadow-md hover:shadow-lg flex items-center justify-center text-gray-600 hover:text-purple-600 transition-all hover:scale-110">
+                            <i class="fab fa-github text-lg"></i>
+                        </a>
+                        <!-- LinkedIn -->
+                        <a href="#" class="w-12 h-12 rounded-full bg-white shadow-md hover:shadow-lg flex items-center justify-center text-gray-600 hover:text-purple-600 transition-all hover:scale-110">
+                            <i class="fab fa-linkedin text-lg"></i>
+                        </a>
+                        <!-- Twitter -->
+                        <a href="#" class="w-12 h-12 rounded-full bg-white shadow-md hover:shadow-lg flex items-center justify-center text-gray-600 hover:text-purple-600 transition-all hover:scale-110">
+                            <i class="fab fa-twitter text-lg"></i>
+                        </a>
+                        <!-- Email -->
+                        <a href="#" class="w-12 h-12 rounded-full bg-white shadow-md hover:shadow-lg flex items-center justify-center text-gray-600 hover:text-purple-600 transition-all hover:scale-110">
+                            <i class="fas fa-envelope text-lg"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Konten kanan (foto profil dengan dekorasi) -->
+                <div class="flex justify-center order-1 lg:order-2">
+                    <div class="relative">
+                        <!-- Lingkaran blur background -->
+                        <div class="absolute inset-0 profile-circle rounded-full blur-3xl opacity-30 floating-animation"></div>
+                        <div class="absolute inset-0 w-80 h-80 lg:w-96 lg:h-96 rounded-full bg-gradient-to-r from-purple-400/20 to-pink-400/20 floating-animation" style="animation-delay: -2s;"></div>
+                        
+                        <!-- Container foto profil -->
+                        <div class="relative w-80 h-80 lg:w-96 lg:h-96 rounded-full bg-white shadow-2xl overflow-hidden border-4 border-white">
+                            <!-- Foto profil -->
+                            <div class="w-full h-full bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
+                                <div class="w-full h-full bg-gray-300 rounded-full flex items-center justify-center">
+                                    <!-- Gambar profil (replace sesuai kebutuhan) -->
+                                    <img src="https://tr.rbxcdn.com/30DAY-Avatar-1EC63E7DC71353130D73F5F214AEE4F1-Png/352/352/Avatar/Png/noFilter" 
+                                         alt="Profile" 
+                                         class="w-full h-full object-cover rounded-full"
+                                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                    <!-- Placeholder jika gambar gagal load -->
+                                    <div class="w-full h-full bg-gradient-to-br from-purple-100 to-pink-100 rounded-full flex items-center justify-center" style="display: none;">
+                                        <i class="fas fa-user text-6xl text-purple-300"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Elemen mengapung (ikon teknologi) -->
+                        <div class="absolute -top-4 -left-4 w-20 h-20 bg-yellow-400 rounded-full flex items-center justify-center shadow-lg floating-animation" style="animation-delay: -1s;">
+                            <i class="fab fa-js text-2xl text-white"></i>
+                        </div>
+                        <div class="absolute -bottom-4 -right-4 w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center shadow-lg floating-animation" style="animation-delay: -3s;">
+                            <i class="fab fa-react text-xl text-white"></i>
+                        </div>
+                        <div class="absolute top-1/4 -right-8 w-12 h-12 bg-green-500 rounded-full flex items-center justify-center shadow-lg floating-animation" style="animation-delay: -4s;">
+                            <i class="fab fa-node-js text-lg text-white"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Scroll indicator (ikon scroll ke bawah) -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2">
+            <div class="w-6 h-10 border-2 border-gray-400 rounded-full flex justify-center">
+                <div class="w-1 h-3 bg-gray-400 rounded-full mt-2 animate-bounce"></div>
+            </div>
+        </div>
+    </section>
