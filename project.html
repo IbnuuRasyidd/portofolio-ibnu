@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects - Ibnu Project</title>
+
+  <!-- TailwindCSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <style>
+    /* Import font Inter dari Google Fonts */
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+    * { font-family: 'Inter', sans-serif; }
+
+    /* Text gradasi */
+  .gradient-text {
+  background: linear-gradient(135deg, #8B5CF6, #EC4899, #EF4444);
+
+  /* versi standar */
+  background-clip: text;
+
+  /* untuk WebKit (Chrome, Safari) */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  /* Firefox butuh tambahan ini */
+  color: transparent;
+}
+
+
+    /* Efek underline nav aktif */
+    .nav-link {
+      position: relative;
+      transition: color 0.3s ease;
+    }
+    .nav-link:hover { color: #8B5CF6; }
+    .nav-link.active {
+      color: #8B5CF6;
+    }
+    .nav-link.active::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(135deg, #8B5CF6, #EC4899);
+      border-radius: 1px;
+    }
+
+    /* Animasi hover card project */
+    .project-card {
+      transition: all 0.3s ease;
+    }
+    .project-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(139, 92, 246, 0.15);
+    }
+    .project-card img {
+      transition: transform 0.3s ease;
+    }
+    .project-card:hover img {
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body class="bg-gray-50">
+
+  <!-- ======================
+       NAVIGATION
+  ======================= -->
+  <nav class="fixed top-0 w-full bg-white/90 backdrop-blur-md border-b border-gray-200 z-50">
+    <div class="max-w-7xl mx-auto px-6 flex justify-between items-center py-5">
+      <!-- Logo -->
+      <div class="text-2xl font-bold text-gray-900">
+        Ibnuu<span class="text-purple-600">.</span>
+      </div>
+
+      <!-- Menu Desktop -->
+      <div class="hidden md:flex space-x-8">
+        <a href="index.html" class="nav-link text-gray-700 font-medium">Home</a>
+        <a href="projects.html" class="nav-link active text-gray-700 font-medium">Projects</a>
+        <a href="about.html" class="nav-link text-gray-700 font-medium">About</a>
+        <a href="contact.html" class="nav-link text-gray-700 font-medium">Contact</a>
+      </div>
+
+      <!-- Dark mode button (dummy) -->
+      <button class="hidden md:flex w-10 h-10 rounded-full bg-gray-100 hover:bg-gray-200 items-center justify-center">
+        <i class="fas fa-moon text-gray-600"></i>
+      </button>
+
+      <!-- Mobile Menu Button -->
+      <button class="md:hidden text-gray-700">
+        <i class="fas fa-bars text-xl"></i>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ======================
+       MAIN CONTENT
+  ======================= -->
+  <main class="pt-28 pb-16">
+    <div class="max-w-6xl mx-auto px-6">
+      
+      <!-- Header -->
+      <div class="text-center mb-12">
+        <h1 class="text-5xl font-bold mb-4">
+          My <span class="gradient-text">Projects</span>
+        </h1>
+        <p class="text-gray-600 max-w-xl mx-auto">
+          A showcase of my works in web, mobile, and UI/UX design.
+        </p>
+      </div>
+
+      <!-- Projects Grid -->
+      <div class="flex justify-center md:grid-cols-2 lg:grid-cols-3 gap-8 ">
+        
+        <!-- Example Project 1 -->
+        <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden">
+          <img src="https://source.unsplash.com/600x400/?website,app" alt="Project Image" class="w-full h-48 object-cover">
+          <div class="p-5">
+            <h3 class="text-xl font-bold mb-2">School Management System</h3>
+            <p class="text-gray-600 text-sm mb-4">A system with student portal, grade tracking, and admin dashboard.</p>
+            <div class="flex gap-3">
+              <a href="#" class="px-4 py-2 border border-gray-400 text-gray-700 text-sm rounded-lg hover:border-purple-600 hover:text-purple-600 transition">
+                <i class="fab fa-github mr-2"></i> Code
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Example Project 2 -->
+        <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden">
+          <img src="https://source.unsplash.com/600x400/?shopping,app" alt="Project Image" class="w-full h-48 object-cover">
+          <div class="p-5">
+            <h3 class="text-xl font-bold mb-2">E-Commerce App</h3>
+            <p class="text-gray-600 text-sm mb-4">Online shopping platform built with Vue.js and Firebase backend.</p>
+            <div class="flex gap-3">
+              <a href="#" class="px-4 py-2 border border-gray-400 text-gray-700 text-sm rounded-lg hover:border-purple-600 hover:text-purple-600 transition">
+                <i class="fab fa-github mr-2"></i> Code
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+</body>
+</html>
