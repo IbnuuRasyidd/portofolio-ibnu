@@ -2,6 +2,9 @@
   "rewrites": [
     { "source": "/", "destination": "/index.html" },
     { "source": "/about", "destination": "/about.html" },
-    { "source": "/contact", "destination": "/contact.html" }
-  ]
+    { "source": "/contact", "destination": "/contact.html" },
+    { "source": "/project", "destination": "/project.html" },
+    { "source": "/projects", "destination": "/project.html" }
+  ],
+  "trailingSlash": false
 }
