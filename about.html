@@ -1,173 +1,79 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About Me - Ibnu Project</title>
-
-  <!-- Import Tailwind CSS via CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Import ikon Font Awesome -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
-    * { font-family: 'Inter', sans-serif; }
-
-    .gradient-text {
-      background: linear-gradient(135deg, #8B5CF6 0%, #EC4899 50%, #EF4444 100%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-      color: transparent;
-    }
-
-    .glass-effect {
-      background: rgba(255, 255, 255, 0.9);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-    }
-
-    .nav-link {
-      position: relative;
-      font-weight: 500;
-      transition: color 0.3s;
-    }
-    .nav-link:hover {
-      color: #8B5CF6;
-    }
-    .nav-link.active {
-      color: #8B5CF6;
-      font-weight: 600;
-    }
-    .nav-link.active::after {
-      content: '';
-      position: absolute;
-      bottom: -4px;
-      left: 0;
-      width: 100%;
-      height: 2px;
-      background: linear-gradient(135deg, #8B5CF6, #EC4899);
-      border-radius: 1px;
-    }
-
-    .floating {
-      animation: floating 6s ease-in-out infinite;
-    }
-    @keyframes floating {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-12px); }
-    }
-  </style>
 </head>
 <body class="bg-gray-50">
 
-  <!-- =======================
-       NAVIGATION BAR
-  ======================== -->
-  <nav class="fixed top-0 w-full z-50 transition-all duration-300 glass-effect" id="navbar">
-    <div class="max-w-7xl mx-auto px-6 lg:px-8">
-      <div class="flex justify-between items-center py-6">
-        <!-- Logo -->
-        <div class="text-2xl font-bold text-gray-900">
-          Ibnuu<span class="text-purple-600">.</span>
-        </div>
-        
-        <!-- Menu navigasi desktop -->
-        <div class="hidden md:flex items-center space-x-8">
-          <a href="index.html" class="nav-link text-gray-700">Home</a>
-          <a href="projects.html" class="nav-link text-gray-700">Projects</a>
-          <a href="about.html" class="nav-link active text-gray-700">About</a>
-          <a href="contact.html" class="nav-link text-gray-700">Contact</a>
-        </div>
-        
-        <!-- Tombol dark mode (dummy) -->
-        <div class="hidden md:flex items-center">
-          <button class="w-10 h-10 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center transition-colors">
-            <i class="fas fa-moon text-gray-600"></i>
-          </button>
-        </div>
-        
-        <!-- Tombol menu mobile -->
-        <button class="md:hidden text-gray-700 hover:text-purple-600 transition-colors" id="menu-toggle">
-          <i class="fas fa-bars text-xl"></i>
-        </button>
+  <!-- Navbar -->
+  <nav class="bg-white shadow fixed w-full top-0 z-10">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+      <!-- Logo -->
+      <div class="text-2xl font-bold text-purple-600">Ibnu.</div>
+
+      <!-- Menu Desktop -->
+      <div class="hidden md:flex space-x-6">
+        <a href="index.html" class="text-gray-700 hover:text-purple-600">Home</a>
+        <a href="projects.html" class="text-gray-700 hover:text-purple-600">Projects</a>
+        <a href="about.html" class="text-purple-600 font-semibold">About</a>
+        <a href="contact.html" class="text-gray-700 hover:text-purple-600">Contact</a>
       </div>
+
+      <!-- Tombol Mobile -->
+      <button id="menu-toggle" class="md:hidden text-gray-700">
+        <i class="fas fa-bars text-xl"></i>
+      </button>
     </div>
-    
-    <!-- Menu mobile -->
-    <div class="md:hidden glass-effect border-t transition-all duration-300 ease-in-out transform origin-top scale-y-0 opacity-0" id="mobile-menu">
-      <div class="px-6 py-4 space-y-3">
-        <a href="index.html" class="block py-2 nav-link">Home</a>
-        <a href="projects.html" class="block py-2 nav-link">Projects</a>
-        <a href="about.html" class="block py-2 nav-link active">About</a>
-        <a href="contact.html" class="block py-2 nav-link">Contact</a>
-      </div>
+
+    <!-- Menu Mobile -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white px-6 py-4 space-y-2 shadow">
+      <a href="index.html" class="block">Home</a>
+      <a href="projects.html" class="block">Projects</a>
+      <a href="about.html" class="block font-semibold text-purple-600">About</a>
+      <a href="contact.html" class="block">Contact</a>
     </div>
   </nav>
 
-  <!-- ========== ABOUT SECTION ========== -->
-  <section id="about" class="pt-32 pb-20 px-6">
-    <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
-      
-      <!-- Bagian kiri -->
-      <div class="flex justify-center lg:justify-start relative">
-        <div class="absolute -top-6 -left-6 w-24 h-24 bg-purple-500 rounded-full floating"></div>
-        <div class="absolute -bottom-8 -right-6 w-16 h-16 bg-pink-500 rounded-full floating" style="animation-delay: -2s"></div>
-
-        <div class="relative w-80 h-80 lg:w-96 lg:h-96 rounded-2xl overflow-hidden shadow-2xl border-4 border-white">
-          <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=500&h=500&fit=crop" 
-               alt="About Photo"
-               class="w-full h-full object-cover" />
-        </div>
+  <!-- About Section -->
+  <section class="max-w-6xl mx-auto pt-28 px-6">
+    <div class="grid md:grid-cols-2 gap-8 items-center">
+      <!-- Foto -->
+      <div>
+        <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=400&h=400&fit=crop" 
+             alt="About Photo"
+             class="rounded-lg shadow-lg w-full max-w-sm mx-auto">
       </div>
 
-      <!-- Bagian kanan -->
-      <div class="text-center lg:text-left">
-        <h2 class="text-4xl font-bold mb-6">
-          <span class="gradient-text">About</span> Me
-        </h2>
-
-        <p class="text-lg text-gray-600 mb-6 leading-relaxed">
-          Hi, I'm <span class="font-semibold text-gray-900">Ibnu</span>, a passionate frontend developer who loves crafting 
-          modern, clean, and user-friendly web applications.  
-          I enjoy turning complex problems into simple, beautiful, and intuitive designs.
+      <!-- Teks -->
+      <div>
+        <h2 class="text-3xl font-bold text-purple-600 mb-4">About Me</h2>
+        <p class="text-gray-700 mb-4">
+          Hi, I'm <span class="font-semibold">Ibnu</span>, a frontend developer who loves building
+          modern and user-friendly websites.
         </p>
-
-        <p class="text-lg text-gray-600 mb-6 leading-relaxed">
-          With experience in <span class="text-purple-600">HTML</span>, <span class="text-blue-500">CSS</span>, 
-          <span class="text-yellow-500">JavaScript</span>, and frameworks like <span class="text-cyan-500">React</span>, 
-          I aim to deliver engaging digital experiences.
+        <p class="text-gray-700 mb-6">
+          I enjoy working with <span class="text-purple-600">HTML</span>, <span class="text-blue-500">CSS</span>,
+          and <span class="text-yellow-500">JavaScript</span>.
         </p>
-
-        <div class="flex justify-center lg:justify-start gap-4">
-          <a href="projects.html" class="px-6 py-3 bg-purple-600 text-white rounded-lg shadow hover:bg-purple-700 transition">
-            View My Projects
-          </a>
-          <a href="contact.html" class="px-6 py-3 border-2 border-gray-600 text-gray-700 rounded-lg hover:border-purple-600 hover:text-purple-600 transition">
-            Contact Me
-          </a>
+        <div class="flex gap-4">
+          <a href="projects.html" class="px-4 py-2 bg-purple-600 text-white rounded hover:bg-purple-700">My Projects</a>
+          <a href="contact.html" class="px-4 py-2 border border-purple-600 text-purple-600 rounded hover:bg-purple-50">Contact Me</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Script untuk animasi menu mobile -->
   <script>
-    const menuToggle = document.getElementById("menu-toggle");
-    const mobileMenu = document.getElementById("mobile-menu");
-
-    menuToggle.addEventListener("click", () => {
-      if (mobileMenu.classList.contains("scale-y-0")) {
-        mobileMenu.classList.remove("scale-y-0", "opacity-0");
-        mobileMenu.classList.add("scale-y-100", "opacity-100");
-      } else {
-        mobileMenu.classList.add("scale-y-0", "opacity-0");
-        mobileMenu.classList.remove("scale-y-100", "opacity-100");
-      }
+    // Script Menu Mobile
+    const menuBtn = document.getElementById("menu-toggle");
+    const menu = document.getElementById("mobile-menu");
+    menuBtn.addEventListener("click", () => {
+      menu.classList.toggle("hidden");
     });
   </script>
-
 </body>
 </html>
